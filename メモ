@@ -1,0 +1,4 @@
+.4　AdminHouseControllerで毎度赤破線
+	houseService・houseRepository・getDescription
+.2 HouseControllerで赤破線
+	setDescription
