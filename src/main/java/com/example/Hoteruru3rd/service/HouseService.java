@@ -27,6 +27,7 @@ public class HouseService {
 	public void create(HouseRegisterForm houseRegisterForm) {
 		House house = new House();
 		MultipartFile imageFile = houseRegisterForm.getImageFile();
+
 		if (!imageFile.isEmpty()) {
 			String imageName = imageFile.getOriginalFilename();
 			String hashedImageName = generateNewFileName(imageName);
@@ -34,6 +35,7 @@ public class HouseService {
 			copyImageFile(imageFile, filePath);
 			house.setImageName(hashedImageName);
 		}
+
 		house.setName(houseRegisterForm.getName());
 		house.setDescription(houseRegisterForm.getDescription());
 		house.setPrice(houseRegisterForm.getPrice());
@@ -41,6 +43,7 @@ public class HouseService {
 		house.setPostalCode(houseRegisterForm.getPostalCode());
 		house.setAddress(houseRegisterForm.getAddress());
 		house.setPhoneNumber(houseRegisterForm.getPhoneNumber());
+
 		houseRepository.save(house);
 	}
 
@@ -48,6 +51,7 @@ public class HouseService {
 	public void update(HouseEditForm houseEditForm) {
 		House house = houseRepository.getReferenceById(houseEditForm.getId());
 		MultipartFile imageFile = houseEditForm.getImageFile();
+
 		if (!imageFile.isEmpty()) {
 			String imageName = imageFile.getOriginalFilename();
 			String hashedImageName = generateNewFileName(imageName);
@@ -55,6 +59,7 @@ public class HouseService {
 			copyImageFile(imageFile, filePath);
 			house.setImageName(hashedImageName);
 		}
+
 		house.setName(houseEditForm.getName());
 		house.setDescription(houseEditForm.getDescription());
 		house.setPrice(houseEditForm.getPrice());
@@ -62,6 +67,7 @@ public class HouseService {
 		house.setPostalCode(houseEditForm.getPostalCode());
 		house.setAddress(houseEditForm.getAddress());
 		house.setPhoneNumber(houseEditForm.getPhoneNumber());
+
 		houseRepository.save(house);
 	}
 
